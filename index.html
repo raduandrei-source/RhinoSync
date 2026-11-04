@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rhino Sync — manual</title>
+<link rel="icon" href="data:image/png;base64,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">
+<style>
+:root { --fg: #1f2328; --muted: #57606a; --line: #d0d7de; --link: #0969da; --bg: #ffffff; --code: #f6f8fa; --accent: #1e88e5; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+a { color: var(--link); text-decoration: none; } a:hover { text-decoration: underline; }
+#toc-root { position: fixed; top: 0; left: 0; width: 270px; height: 100vh; overflow-y: auto; font-size: 13px; line-height: 1.5;
+            border-right: 1px solid var(--line); background: #fafbfc; padding: 18px 0 30px 0; }
+#toc-brand { display: flex; align-items: center; gap: 10px; padding: 0 18px 12px 18px; border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+#toc-brand img { width: 36px; height: 36px; border-radius: 6px; }
+#toc-brand b { font-size: 15px; } #toc-brand small { display: block; color: var(--muted); font-size: 11px; }
+#toc { padding: 0 18px; }
+#lang-switch { padding: 0 18px 12px 18px; border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+#lang-switch label, .lang-m label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 4px; }
+#lang-select, #lang-select-m { width: 100%; font-size: 13px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 4px; background: #fff; }
+.lang-block { display: none; } .lang-block.on { display: block; }
+#lang-mobile { display: none; } @media (max-width: 1099px) { #lang-mobile { display: block; max-width: 220px; margin: 0 0 12px auto; } }
+.toc-item { margin-bottom: 2px; }
+.toc-h2 { display: block; color: var(--fg); font-weight: 600; padding: 4px 0; }
+.toc-h3 { display: block; color: var(--muted); font-size: 12px; padding: 2px 0 2px 14px; }
+.toc-children { display: none; } .toc-item.open .toc-children { display: block; }
+.toc-h2.current { color: var(--link); }
+#toc-links { padding: 14px 18px 0 18px; border-top: 1px solid var(--line); margin-top: 14px; font-size: 12px; }
+#toc-links a { display: block; padding: 2px 0; }
+main { max-width: 820px; margin: 0 auto; padding: 32px 28px 80px 28px; overflow-wrap: break-word; }
+main code { overflow-wrap: anywhere; } table { display: block; overflow-x: auto; }
+@media (max-width: 600px) { main { padding: 20px 16px 60px 16px; } header.title img { width: 44px; height: 44px; } header.title h1 { font-size: 22px; } }
+@media (min-width: 1100px) { main { margin-left: 310px; } }
+@media (max-width: 1099px) { #toc-root { display: none; } }
+header.title { display: flex; align-items: center; gap: 16px; border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 24px; }
+header.title img { width: 64px; height: 64px; border-radius: 10px; }
+header.title h1 { margin: 0; font-size: 28px; line-height: 1.2; }
+header.title .sub { color: var(--muted); margin-top: 4px; }
+header.title .ver { color: var(--muted); font-size: 13px; margin-top: 2px; }
+h2 { font-size: 22px; border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-top: 40px; }
+h3 { font-size: 17px; margin-top: 28px; }
+h4 { font-size: 15px; margin-top: 20px; }
+h2 a.anchor, h3 a.anchor { color: var(--line); margin-left: 6px; font-weight: normal; } h2:hover a.anchor, h3:hover a.anchor { color: var(--link); }
+p, ul, ol, table, pre, blockquote { margin: 0 0 14px 0; }
+li { margin: 3px 0; }
+code { font: 13.5px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace; background: var(--code); padding: 1px 5px; border-radius: 5px; }
+pre { background: var(--code); padding: 12px 14px; border-radius: 6px; overflow-x: auto; } pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; } th, td { border: 1px solid var(--line); padding: 6px 10px; vertical-align: top; text-align: left; }
+th { background: var(--code); }
+blockquote { border-left: 4px solid var(--line); color: var(--muted); padding: 2px 14px; }
+img.fig { max-width: 100%; border: 1px solid var(--line); border-radius: 6px; }
+.badge { display: inline-block; font-size: 12px; background: var(--code); border: 1px solid var(--line); border-radius: 10px; padding: 0 8px; color: var(--muted); }
+.changelog .version { font-weight: 600; } .changelog .when { color: var(--muted); font-size: 13px; margin-left: 6px; }
+.refs li { margin-bottom: 8px; }
+footer { border-top: 1px solid var(--line); margin-top: 48px; padding-top: 12px; color: var(--muted); font-size: 13px; }
+kbd { font: 12px ui-monospace, Consolas, monospace; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: #fff; }
+</style>
+</head>
+<body>
+<nav id="toc-root">
+  <div id="toc-brand"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAI7UlEQVR4nOSbe1BU9xXHvyzL+628kUexEKJ2BAIIdKqCjtPBTjNCRAnOVGOKNVXHTrU42o6S0j/aTHxMk6ZWatKpqaQWq04bX53RakVWQMBhoEKUyBsEwyPA8lpyzsVdWPbB3mWBBT4zd/d3f/f+7u45v3PP7/zO714pDCAuLm6dhYVFEhVjaPMdGRnxon0HmBH0n3roP7VQsVGhUMho/98ymezWZO0sdB1Yu3atVC6Xvy2RSH5Fu76YmzSSIrJsbGzO3r59e0jbCdoUIImPj0+lhu+SRkMwP6gieX55//79f1B5ZPwBDQXExsamkuCf0GaHeQQpoJe2tIKCgivj69UUQMInk+AXaJNgHkIKULxUwt+VdSoFkKP7Dn3J5lvPT4QU0Ecyxufn55fyvrKn+Tt3vgvPvJTxr3gpu/BBpp9BB5Zh4bCCZeaCxbJlyxxdXV2fUtkDC4tW6vRvS52dnd/AwhOe8RweHk6RkhbWYoFCssdK6TsIC5ewBa0AsgBvCX9gDhMeHg5joZjAm4dBG8xBFi1ahJycHNAIBmOhzneRYg4SEBCAU6dOwdPTE8XFxZgKc04BgYGBOH36NJycnFBbW4vu7m5MhTmlADb7kydPCsIzJSUlmCpGzfqsra3h4+ODmSY7O1sweyUPHz7EVDFKARkZGcjKymIngpliy5YtWLlypVpdUVERpopoBSxduhRpaWlYvnw5du7cCWNgz81WZCjs9Pbt26dWV1NTg46ODkwV0Qo4fPiwqrxjxw6NXjGE1atXY9euXQaff/ToUY06U/Q+I0oBmzdvRlhYmFod/zl7e3uIISEhQTDp0NDQSc9NSkrS+E2msLAQpsCCEqAjhpzo7u6O8+fPaxWWnVFbWxs8PMYmlYODg6ioqBDG6fLycgwMDAj1jo6OuH79ulCurq7G9u3b9f7uhQsX4OurmZROTExEf38/porBw+D69et19nRkZKTW+piYGJWA3GNXr16Fnd1Y0ikkJATbtm3DuXPntLan1LxW4SmnZxLhGYMVUF9fj6kQHR0tbBPZvXu34BNu3ryJy5cvqyyFSUlJ0XotSm/DVBjsA9jrThc8ouzfvx8XL17E1q1bhToeKXRZ1t27d2EqDLaAhoYGwexolQXThZubG/bu3Yvk5GTBzLXx9OlTtLS0wFSIGgW6urpgKm7cuIFjx44JjnIifn5+Os3/3r17MCUGW8C6devUvPxUaG9vFyJJhi3rzJkzBrc1dfRpkAVYWloKzspUUCICxpKenq7VmRqLQRbA96QpJz8cUxw/fhxPnjzBqlWrRLVlCzh06JDOW0QsBgVC7J29vLxgTrCznJHZIC2cmJ3wTFRUFEzBpLcAOz9zhEcKUzCpAjZs2ID5jF4F+Pv7C2koc6S5uRmmQK8PCA4OxmzR1NSEzMxM3Lp1S0h8Pnv2DGfPnhWywYyp5gN6LWA2FcBDJS1hIy8vT8gFuri4ICIiAps2bUJlZSVKS0t1trVxdYYlhey9Lc8n/R2zVYCVlZUgLG/jqaqqwsGDBzUbSCQI2rAGS9bEw26xm1DV39mNhv/JUPP5f6AY1PqQmH4FBAUFwVwoKyvDtWvXcOXKFY1j1tTjr/1sFxx91IdrGxcnBG9cD+/ocBT85iSG++QabfUqgGdnMwlninhuoKSnp0fIGrHJ9/b2am3DwkcfeAf2nu6qutaScgzRzNUnJgIWZBl87JUtr6Pik8802utVgIPDzDwMytPsI0eOiHZsE4Ufkvej5Pc56KgezV003ClA9C9+KpT94qPx+LPLGlagdxQQk7o2FrlcLiRDxApv4+aCmMy944SXo/jEaZXwTMcXNXj+aGy67eSvmV7TaQGcvJwJeGLz6NEjUW0k1DFRB3arnB33fPGJP6Grplb9RJo4OfqNTeL4dpiITgXwFNgUa2/64NSWMent0Dd+AHuPsZ4vev+P6H6mmbNcsjpWpSSmu7ZB4xydCujs7MSePXtgbkispIJgSso++otW4X1iI/Fq+tiUuamgGEO9fRrnzZnVYRY86PuJ8E/4rsqUh2lsdwkKwIvHTwCFQnWuT+xrWPFWmmq/v6MTlef/qfW6Bi+MzCZ2HouFcd7OfZHwqPdYUmx07+umFhRkn8AIKYTH/BVvp6tSZxwMFf72A/S1tWu9ttlbAAsfdfAd2Lq6aDk6KqQDBUAhyRshb/8Kr6T+UHV0oIuEf+9DncIzrABeYjHL54TsvTwQTcJbOzup6qpyL8GeBPZfE6eqYzUEJH4P4/OlbPaF7/0Bfc91C0+5yU4pfTSTuQTCzLBzp54/MCY8J1LLcz5Fc2GpMAwufjVELfobL7z8xVeC8GwR+iC5m9mbmGZibUIsbW0Es+dYXkn5n/8mCM8oaPmMY3sOeSfCdflZ708qPMOdz7cAX1VcanaaCXszGbZuo/f8CHn38o9z0fxAPSbhkLYxvxAe4cuF7h8ZHsadzGwMdol6aKqULeASzAipvR18aRhTUvlpHpplmtlfl+BArNj5puDt2frrKe4XKTyNnIpcCcXg18gUpjfkE4FzoL+q3PllHRruyjTP+VYAIvf/GFLbUd/d+7wN1Xn/gkjKZDJZgTI4fhdmwnhnphgc1DjuFLiEYoIMEt5W2O9rH3V4ioFBiIE6/Rh/CwogK7hkLlbQVdeoKruFBMMtdKlq3zU0GFE//8mY8G0vUPi7DzDQIXrRtoxl5oKlssbX17eA7qcf0WaFWYQ9vIO3h2oW57MqUogHfGKjEJqyERLpaOzGZs9Bjljh+aUp+kqqr69v5X2VAigT0xIQEPCYiqmYZV78/wsKaSNgRQ6R436nJb4U7Y09INnT3EozwI+MEV752tx/lXWW40+oq6uroBUXvhVen01L4ARm4/0iOPp6w8FLfUm+gYa+0g8/xlBPn6hrvnxdLplMX/eLk0ri4uIi6ORcKk7+HNs0I3WwH50EDSvQ29om3CJGUDU0NJT64MGDsokH9L48Tbm6t0gR/JTinH15msb6X9va2uaIeXlaA1rDTyBFbJRIJBwxmvvr85z2yaft8/z8/DuTtfsGAAD//9bpQagAAAAGSURBVAMAhjY6pkSqww8AAAAASUVORK5CYII=" alt=""><div><b>Rhino Sync</b><small id="toc-sub"></small></div></div>
+  <div id="lang-switch"><label for="lang-select">Language · Limba</label><select id="lang-select"><option value="en">English</option><option value="ro">Română</option></select></div>
+  <div id="toc"></div>
+  <div id="toc-links"></div>
+</nav>
+<main>
+<div id="lang-mobile"><div class="lang-m"><label for="lang-select-m">Language · Limba</label><select id="lang-select-m"><option value="en">English</option><option value="ro">Română</option></select></div></div>
+<div class="lang-block" id="lang-en" lang="en" data-subtitle="Live Rhino 8 ↔ QGIS link through a shared folder">
+<header class="title">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAI7UlEQVR4nOSbe1BU9xXHvyzL+628kUexEKJ2BAIIdKqCjtPBTjNCRAnOVGOKNVXHTrU42o6S0j/aTHxMk6ZWatKpqaQWq04bX53RakVWQMBhoEKUyBsEwyPA8lpyzsVdWPbB3mWBBT4zd/d3f/f+7u45v3PP7/zO714pDCAuLm6dhYVFEhVjaPMdGRnxon0HmBH0n3roP7VQsVGhUMho/98ymezWZO0sdB1Yu3atVC6Xvy2RSH5Fu76YmzSSIrJsbGzO3r59e0jbCdoUIImPj0+lhu+SRkMwP6gieX55//79f1B5ZPwBDQXExsamkuCf0GaHeQQpoJe2tIKCgivj69UUQMInk+AXaJNgHkIKULxUwt+VdSoFkKP7Dn3J5lvPT4QU0Ecyxufn55fyvrKn+Tt3vgvPvJTxr3gpu/BBpp9BB5Zh4bCCZeaCxbJlyxxdXV2fUtkDC4tW6vRvS52dnd/AwhOe8RweHk6RkhbWYoFCssdK6TsIC5ewBa0AsgBvCX9gDhMeHg5joZjAm4dBG8xBFi1ahJycHNAIBmOhzneRYg4SEBCAU6dOwdPTE8XFxZgKc04BgYGBOH36NJycnFBbW4vu7m5MhTmlADb7kydPCsIzJSUlmCpGzfqsra3h4+ODmSY7O1sweyUPHz7EVDFKARkZGcjKymIngpliy5YtWLlypVpdUVERpopoBSxduhRpaWlYvnw5du7cCWNgz81WZCjs9Pbt26dWV1NTg46ODkwV0Qo4fPiwqrxjxw6NXjGE1atXY9euXQaff/ToUY06U/Q+I0oBmzdvRlhYmFod/zl7e3uIISEhQTDp0NDQSc9NSkrS+E2msLAQpsCCEqAjhpzo7u6O8+fPaxWWnVFbWxs8PMYmlYODg6ioqBDG6fLycgwMDAj1jo6OuH79ulCurq7G9u3b9f7uhQsX4OurmZROTExEf38/porBw+D69et19nRkZKTW+piYGJWA3GNXr16Fnd1Y0ikkJATbtm3DuXPntLan1LxW4SmnZxLhGYMVUF9fj6kQHR0tbBPZvXu34BNu3ryJy5cvqyyFSUlJ0XotSm/DVBjsA9jrThc8ouzfvx8XL17E1q1bhToeKXRZ1t27d2EqDLaAhoYGwexolQXThZubG/bu3Yvk5GTBzLXx9OlTtLS0wFSIGgW6urpgKm7cuIFjx44JjnIifn5+Os3/3r17MCUGW8C6devUvPxUaG9vFyJJhi3rzJkzBrc1dfRpkAVYWloKzspUUCICxpKenq7VmRqLQRbA96QpJz8cUxw/fhxPnjzBqlWrRLVlCzh06JDOW0QsBgVC7J29vLxgTrCznJHZIC2cmJ3wTFRUFEzBpLcAOz9zhEcKUzCpAjZs2ID5jF4F+Pv7C2koc6S5uRmmQK8PCA4OxmzR1NSEzMxM3Lp1S0h8Pnv2DGfPnhWywYyp5gN6LWA2FcBDJS1hIy8vT8gFuri4ICIiAps2bUJlZSVKS0t1trVxdYYlhey9Lc8n/R2zVYCVlZUgLG/jqaqqwsGDBzUbSCQI2rAGS9bEw26xm1DV39mNhv/JUPP5f6AY1PqQmH4FBAUFwVwoKyvDtWvXcOXKFY1j1tTjr/1sFxx91IdrGxcnBG9cD+/ocBT85iSG++QabfUqgGdnMwlninhuoKSnp0fIGrHJ9/b2am3DwkcfeAf2nu6qutaScgzRzNUnJgIWZBl87JUtr6Pik8802utVgIPDzDwMytPsI0eOiHZsE4Ufkvej5Pc56KgezV003ClA9C9+KpT94qPx+LPLGlagdxQQk7o2FrlcLiRDxApv4+aCmMy944SXo/jEaZXwTMcXNXj+aGy67eSvmV7TaQGcvJwJeGLz6NEjUW0k1DFRB3arnB33fPGJP6Grplb9RJo4OfqNTeL4dpiITgXwFNgUa2/64NSWMent0Dd+AHuPsZ4vev+P6H6mmbNcsjpWpSSmu7ZB4xydCujs7MSePXtgbkispIJgSso++otW4X1iI/Fq+tiUuamgGEO9fRrnzZnVYRY86PuJ8E/4rsqUh2lsdwkKwIvHTwCFQnWuT+xrWPFWmmq/v6MTlef/qfW6Bi+MzCZ2HouFcd7OfZHwqPdYUmx07+umFhRkn8AIKYTH/BVvp6tSZxwMFf72A/S1tWu9ttlbAAsfdfAd2Lq6aDk6KqQDBUAhyRshb/8Kr6T+UHV0oIuEf+9DncIzrABeYjHL54TsvTwQTcJbOzup6qpyL8GeBPZfE6eqYzUEJH4P4/OlbPaF7/0Bfc91C0+5yU4pfTSTuQTCzLBzp54/MCY8J1LLcz5Fc2GpMAwufjVELfobL7z8xVeC8GwR+iC5m9mbmGZibUIsbW0Es+dYXkn5n/8mCM8oaPmMY3sOeSfCdflZ708qPMOdz7cAX1VcanaaCXszGbZuo/f8CHn38o9z0fxAPSbhkLYxvxAe4cuF7h8ZHsadzGwMdol6aKqULeASzAipvR18aRhTUvlpHpplmtlfl+BArNj5puDt2frrKe4XKTyNnIpcCcXg18gUpjfkE4FzoL+q3PllHRruyjTP+VYAIvf/GFLbUd/d+7wN1Xn/gkjKZDJZgTI4fhdmwnhnphgc1DjuFLiEYoIMEt5W2O9rH3V4ioFBiIE6/Rh/CwogK7hkLlbQVdeoKruFBMMtdKlq3zU0GFE//8mY8G0vUPi7DzDQIXrRtoxl5oKlssbX17eA7qcf0WaFWYQ9vIO3h2oW57MqUogHfGKjEJqyERLpaOzGZs9Bjljh+aUp+kqqr69v5X2VAigT0xIQEPCYiqmYZV78/wsKaSNgRQ6R436nJb4U7Y09INnT3EozwI+MEV752tx/lXWW40+oq6uroBUXvhVen01L4ARm4/0iOPp6w8FLfUm+gYa+0g8/xlBPn6hrvnxdLplMX/eLk0ri4uIi6ORcKk7+HNs0I3WwH50EDSvQ29om3CJGUDU0NJT64MGDsokH9L48Tbm6t0gR/JTinH15msb6X9va2uaIeXlaA1rDTyBFbJRIJBwxmvvr85z2yaft8/z8/DuTtfsGAAD//9bpQagAAAAGSURBVAMAhjY6pkSqww8AAAAASUVORK5CYII=" alt="Rhino Sync">
+  <div>
+    <h1>Rhino Sync</h1>
+    <div class="sub">Live Rhino 8 ↔ QGIS link through a shared folder</div>
+    <div class="ver">version 0.2.1 · manual generated on 2026-11-04 from <code>06-plugin/help/rhino-sync/en</code> · <a href="https://raduandrei-source.github.io/RhinoSync/">online version</a></div>
+  </div>
+</header>
+<h2 id="en-what-rhino-sync-is">What Rhino Sync is<a class="anchor" href="#en-what-rhino-sync-is" title="Permanent link">¶</a></h2>
+<p>Draw or correct in Rhino 8 and see the result in QGIS; send layers from QGIS and see them in Rhino, with no export / import steps. The link is <strong>independent of MapQuilt</strong>: the same connection works in any Rhino + QGIS project (a masterplan, an urban design sketch, a measured survey). MapQuilt only embeds it in its dock, as a tab.</p>
+<p>"Live" does not mean a socket but <strong>two file watchers</strong> on the same folder: Rhino writes <code>rhino_push.geojson</code>, QGIS loads it within 0.5 s; QGIS writes <code>qgis_pull.geojson</code>, Rhino draws it. That is enough for working on the same machine or on a shared folder.</p>
+<h3 id="en-who-made-it">Who made it<a class="anchor" href="#en-who-made-it" title="Permanent link">¶</a></h3>
+<p>Rhino Sync, like MapQuilt, was created by <strong>Radu Andrei</strong>, of the "Gheorghe Asachi" Technical University of Iași, Faculty of Architecture "G. M. Cantacuzino", with the help of <strong>Claude</strong>, the AI model by Anthropic, which wrote the code, tests and documentation under the author's guidance, on the scans of the ICPROM Iași cadastral plans (1988–1990) and on the benchmark drawn by the author in Rhino. The research questions, the method decisions, the ground-truth verification and every confirmation on the real sheets are the author's; the test reports in the repository (T1–T19) record what was tried and with what figures.</p>
+<h3 id="en-the-user-rule">The user rule<a class="anchor" href="#en-the-user-rule" title="Permanent link">¶</a></h3>
+<p><em>You draw on <code>SCHITA</code>, you read <code>CONTEXT</code>, and <code>QGIS</code> answers you.</em></p>
+<table>
+<thead>
+<tr>
+<th>Rhino layer family</th>
+<th>Who writes it</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SCHITA::&lt;CLASS&gt;[::&lt;SUBTYPE&gt;]</code></td>
+<td>you</td>
+<td>the only family that leaves on push (SCHITA = sketch); the second level is the class (<code>SCHITA::CLADIRI</code> → building), the third the subtype (<code>SCHITA::CLADIRI::P+4</code> → <code>subtype</code> P+4, and <code>RH</code> if it is a height regime)</td>
+</tr>
+<tr>
+<td><code>CONTEXT::&lt;LAYER&gt;</code></td>
+<td>QGIS → Rhino ("Send context")</td>
+<td>the existing situation (CONTEXT = context; cadastre, buildings, boundaries…), drawn <strong>locked</strong>, replaced at every send, never exported</td>
+</tr>
+<tr>
+<td><code>QGIS::&lt;LAYER&gt;</code></td>
+<td>QGIS → Rhino ("Send to Rhino")</td>
+<td>the answers: what was taken over / edited in QGIS; replaced at every pull, never exported</td>
+</tr>
+<tr>
+<td><code>PARCELE</code>, <code>CLADIRI</code> … (plain)</td>
+<td>older drawings</td>
+<td>the plain convention still works</td>
+</tr>
+</tbody>
+</table>
+<p>Every entity sent carries <code>rhino_id</code> (the GUID of the Rhino object), <code>class</code>, <code>subtype</code>, <code>RH</code>, and the fills (<code>fill_pattern</code>, <code>fill_color</code>, <code>fill_scale</code>, <code>fill_angle</code>).</p>
+<h3 id="en-georeferencing-convention">Georeferencing convention<a class="anchor" href="#en-georeferencing-convention" title="Permanent link">¶</a></h3>
+<p>The Rhino model is in <strong>meters</strong>, and the coordinates <strong>are</strong> those of the projected CRS (Stereo 70 by default, EPSG:3844): the origin is not moved and no transformation is applied. The point 695 500 / 633 200 in the drawing is the point 695 500 / 633 200 on the map. <code>EarthAnchorPoint</code> is ignored (the command warns if it is set); a document that is not in meters gets a warning.</p>
+<h2 id="en-installation">Installation<a class="anchor" href="#en-installation" title="Permanent link">¶</a></h2>
+<h3 id="en-with-one-click">With one click<a class="anchor" href="#en-with-one-click" title="Permanent link">¶</a></h3>
+<p><code>08-rhino\installer\dist\RhinoSyncSetup.exe</code> copies the scripts to <code>Documents\rhino-sync</code>, writes the aliases <code>RhinoSync</code>, <code>RhinoSyncPush</code>, <code>RhinoSyncPull</code>, <code>RhinoSyncWatch</code> into the Rhino 8 settings and puts the <strong>Rhino Sync</strong> plugin into the QGIS profile, enabled. Close Rhino and QGIS first (the aliases are written to <code>settings-Scheme__Default.xml</code>, which Rhino rewrites when it closes).</p>
+<h3 id="en-manually-in-rhino-8">Manually, in Rhino 8<a class="anchor" href="#en-manually-in-rhino-8" title="Permanent link">¶</a></h3>
+<ol>
+<li>Copy <code>08-rhino</code> (or at least <code>mapquilt_rhino.py</code>, <code>RhinoSync.py</code>, <code>MapQuiltPush.py</code>, <code>MapQuiltPull.py</code>, <code>MapQuiltWatch.py</code>) somewhere stable, e.g. <code>Documents\rhino-sync\</code>.</li>
+<li><em>Options › Aliases</em>, one per command (a single pair of quotes; the path is yours):</li>
+</ol>
+<pre><code>RhinoSync        ! _-RunPythonScript &quot;C:\Users\&lt;you&gt;\Documents\rhino-sync\RhinoSync.py&quot;
+RhinoSyncPush    ! _-RunPythonScript &quot;C:\Users\&lt;you&gt;\Documents\rhino-sync\MapQuiltPush.py&quot;
+RhinoSyncPull    ! _-RunPythonScript &quot;C:\Users\&lt;you&gt;\Documents\rhino-sync\MapQuiltPull.py&quot;
+RhinoSyncWatch   ! _-RunPythonScript &quot;C:\Users\&lt;you&gt;\Documents\rhino-sync\MapQuiltWatch.py&quot;
+</code></pre>
+<p>The script runs on CPython 3 (the default in Rhino 8); the panel needs Eto.Forms, hence CPython. The first run on an unsaved document asks for the folder.</p>
+<h3 id="en-manually-in-qgis">Manually, in QGIS<a class="anchor" href="#en-manually-in-qgis" title="Permanent link">¶</a></h3>
+<p>Copy <code>08-rhino/qgis-plugin/rhino_sync</code> into <code>%APPDATA%\QGIS\QGIS4\profiles\default\python\plugins\</code> and enable <strong>Rhino Sync</strong> from <em>Plugins › Manage</em>; the dock opens from the Vector menu or from the toolbar. With MapQuilt installed, the same box is the <strong>Rhino sync</strong> tab of the MapQuilt dock.</p>
+<h3 id="en-the-shared-folder">The shared folder<a class="anchor" href="#en-the-shared-folder" title="Permanent link">¶</a></h3>
+<p>By default the folder is <code>rhino-sync</code> next to the <code>.3dm</code> file; Rhino remembers it in the document's user text, QGIS in its settings. One folder = one project.</p>
+<pre><code>&lt;folder&gt;/rhino_push.geojson    written by Rhino, read by QGIS
+&lt;folder&gt;/qgis_pull.geojson     written by QGIS, read by Rhino (onto QGIS::*)
+&lt;folder&gt;/qgis_context.geojson  written by QGIS, read by Rhino (onto CONTEXT::*, locked)
+&lt;folder&gt;/.alive-rhino, .alive-qgis   heartbeat of each side while it is on Play (3 s)
+&lt;folder&gt;/.mapquilt-sync.json   sidecar (who, when, what, CRS, layer map)
+&lt;folder&gt;/sync-config.json      optional: CRS, layer map, parent layer names, styles
+&lt;folder&gt;/rhino_sync.gpkg       created by QGIS: the sketch mirror, one layer per class (draft_*)
+&lt;folder&gt;/project.gpkg          created by QGIS on Promote: the project tables, with rhino_id
+</code></pre>
+<p>Files are written atomically (temporary file + replace, retrying for one second if Windows answers "Access is denied" because the other side is reading).</p>
+<h2 id="en-the-play-panel">The Play panel<a class="anchor" href="#en-the-play-panel" title="Permanent link">¶</a></h2>
+<p>The same on both sides.</p>
+<p><strong>Rhino</strong>: <code>RhinoSync</code> opens a modeless "Rhino sync" window: <em>Project folder</em> (+ "…"), a lamp with a caption, <strong>Play / Stop</strong>, <em>Send now</em>, <em>Get now</em>, <em>Get context</em> and the last message. Play = live mode (automatic push 1.5 s after the last change, automatic pull and context, heartbeat in <code>.alive-rhino</code>); the lamp is green while QGIS is on Play too. Running the command again brings the window to the front instead of opening another one.</p>
+<p><strong>QGIS</strong>: the "Rhino sync" dock (or the tab in MapQuilt) has the same elements: <em>Project folder</em>, lamp, <strong>Play / Stop</strong>, <em>Send to Rhino</em>, <em>Get now</em>, plus <em>Send context</em>, <em>Promote to project</em>, <em>Fields…</em>, <em>Send image</em>. Play = watching the folder (every push from Rhino loads by itself) and the heartbeat in <code>.alive-qgis</code>; the Play state is remembered between sessions.</p>
+<h3 id="en-the-typical-cycle">The typical cycle<a class="anchor" href="#en-the-typical-cycle" title="Permanent link">¶</a></h3>
+<ol>
+<li>In Rhino: <code>RhinoSync</code> › Play. In QGIS: Play.</li>
+<li>Draw on <code>SCHITA::PARCELE</code> or <code>SCHITA::CLADIRI::P+4</code>; a second or two after you lift your hand, the parcel appears in QGIS, in the <strong>Rhino › Draft from Rhino</strong> group, over the plan sheet and the satellite image.</li>
+<li>Correct a face in QGIS, then <em>Send to Rhino</em>: you see it at once on <code>QGIS::PARCELE</code>, in the color of the QGIS symbol.</li>
+<li><em>Send context</em> sends the selected layers (the existing cadastre, the buildings) to <code>CONTEXT::&lt;LAYER NAME&gt;</code>, locked in Rhino.</li>
+</ol>
+<h3 id="en-draft-project-in-qgis">Draft / Project in QGIS<a class="anchor" href="#en-draft-project-in-qgis" title="Permanent link">¶</a></h3>
+<ul>
+<li>The <strong>Rhino › Draft from Rhino</strong> group: the sketch mirror, <code>draft_&lt;class&gt;</code> layers in <code>rhino_sync.gpkg</code>, <strong>read-only</strong>, replaced at every push, styled by class (categorized renderer on <code>fill_pattern</code>).</li>
+<li><strong>Promote to project</strong> copies the features from the mirror (those selected in the <code>draft_*</code> layers, or all of them) into <code>project.gpkg</code>, group <strong>Rhino › Project</strong>, one table per class (<code>parcel</code>, <code>building</code>, <code>indicator</code>, <code>zf_propusa</code> …) with <code>rhino_id</code>, <code>class</code>, <code>subtype</code>, <code>RH</code>, <code>code</code>, <code>radius_m</code>, <code>area_m2</code>, <code>source</code>, <code>promoted_at</code>, <code>note</code>, the fills and any columns you add. A feature already promoted (same <code>rhino_id</code>) is updated, not duplicated.</li>
+<li><em>Send to Rhino</em> sends the selected layers (by default all vector layers outside the mirror, so the project tables too) to <code>QGIS::*</code>.</li>
+</ul>
+<h3 id="en-labels-fields-image">Labels, fields, image<a class="anchor" href="#en-labels-fields-image" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Fields…</strong>: a window listing the layers and their fields, with checkboxes. The checked fields go to Rhino at every <em>Send</em>: the <strong>first</strong> checked field becomes a <strong>text</strong> centered in the polygon (height <code>label_height_m</code>, 2 m by default, in the QGIS label color), and all checked fields become attributes (user text on the object).</li>
+<li><strong>Text edited in Rhino comes back to QGIS</strong>: label texts remember their field and feature; on push, the changed ones go into <code>rhino_push.geojson</code> as <code>mapquilt.edits</code>, and QGIS writes the new value into the field.</li>
+<li><strong>Send image</strong> renders the raster layers (the selected ones, otherwise the visible ones: XYZ satellite, orthophoto) over the extent of the selected vector layers or, with no selection, over what the map shows, +30 % on each side, at 0.5 m/pixel (at most 4096 px), in the project CRS; Rhino places it as a locked <code>PictureFrame</code> on <code>CONTEXT::IMAGINE</code>.</li>
+</ul>
+<h2 id="en-conventions">Conventions<a class="anchor" href="#en-conventions" title="Permanent link">¶</a></h2>
+<h3 id="en-layers-and-geometries">Layers and geometries<a class="anchor" href="#en-layers-and-geometries" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Rhino layer</th>
+<th>class</th>
+<th>geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STRAZI</code></td>
+<td>street</td>
+<td>closed polyline</td>
+</tr>
+<tr>
+<td><code>PARCELE</code></td>
+<td>parcel (includes the building)</td>
+<td>closed polyline</td>
+</tr>
+<tr>
+<td><code>CLADIRI</code></td>
+<td>building</td>
+<td>closed polyline</td>
+</tr>
+<tr>
+<td><code>ANEXE</code></td>
+<td>annex</td>
+<td>closed polyline</td>
+</tr>
+<tr>
+<td><code>AMENAJARI</code></td>
+<td>amenity</td>
+<td>closed polyline</td>
+</tr>
+<tr>
+<td><code>CODURI</code></td>
+<td>indicator</td>
+<td>circle (→ point with <code>radius_m</code>) or text (→ point with <code>code</code>)</td>
+</tr>
+<tr>
+<td>any</td>
+<td>the same class</td>
+<td><strong>hatch</strong> → polygon with holes + fill (<code>fill_pattern</code>, <code>fill_color</code>, <code>fill_scale</code>, <code>fill_angle</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Only <strong>closed</strong> outlines go through (an open polyline with a gap under 1 m is closed automatically and reported; over 1 m it is skipped). Curves that are not polylines (splines, polycurves with arcs) are sampled at 200 vertices; NURBS circles are recognized by circle fitting. Nested layers go by their last name (<code>Default::PARCELE</code> = <code>PARCELE</code>). A <code>SCHITA::&lt;unmapped name&gt;</code> layer gives the class <code>&lt;name&gt;</code> in lower case (<code>SCHITA::ZF_PROPUSA</code> → <code>zf_propusa</code>).</p>
+<h3 id="en-fills-and-colors-both-ways">Fills and colors, both ways<a class="anchor" href="#en-fills-and-colors-both-ways" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Rhino → QGIS.</strong> A hatch becomes a polygon with its holes and with <code>fill_pattern</code> (<code>Solid</code>, <code>Hatch1</code>, <code>Hatch2</code>, <code>Hatch3</code>, <code>HatchDash</code>, <code>Grid</code>, <code>Grid60</code>, <code>Plus</code>, <code>Squares</code>; a custom pattern is sent as <code>Hatch1</code>), <code>fill_color</code> (<code>#rrggbb</code>, by object or by layer), <code>fill_scale</code>, <code>fill_angle</code>. QGIS draws them with a categorized renderer.</li>
+<li><strong>QGIS → Rhino.</strong> <em>Send to Rhino</em> reads the symbol of each feature (single symbol, categorized, rule-based) and translates it into the closest Rhino pattern: simple fill → <code>Solid</code>; line pattern fill → <code>Hatch1</code> / <code>HatchDash</code> (angle and spacing are kept; two families at 90° → <code>Grid</code>, three at 60° → <code>Grid60</code>); outline and fill colors are kept. A QGIS layer that is not a class goes to <code>QGIS::&lt;ITS NAME&gt;</code> (no diacritics, upper case), in the symbol color.</li>
+<li><code>nominal_scale</code> (1000 by default) sets the paper scale at which the millimeters of QGIS symbols become meters in Rhino (1 mm = 1 m).</li>
+</ul>
+<h3 id="en-sync-configjson"><code>sync-config.json</code><a class="anchor" href="#en-sync-configjson" title="Permanent link">¶</a></h3>
+<p>QGIS creates it with the default values when you choose the folder; you can edit it. Both sides read it.</p>
+<pre><code class="language-json">{&quot;crs&quot;: &quot;EPSG:3844&quot;,
+ &quot;layers&quot;: {&quot;STRAZI&quot;: &quot;street&quot;, &quot;PARCELE&quot;: &quot;parcel&quot;, &quot;CLADIRI&quot;: &quot;building&quot;, &quot;ANEXE&quot;: &quot;annex&quot;, &quot;AMENAJARI&quot;: &quot;amenity&quot;, &quot;CODURI&quot;: &quot;indicator&quot;},
+ &quot;all_layers&quot;: false,
+ &quot;draft_parent_layer&quot;: &quot;SCHITA&quot;, &quot;context_parent_layer&quot;: &quot;CONTEXT&quot;, &quot;pull_parent_layer&quot;: &quot;QGIS&quot;,
+ &quot;qgis_group&quot;: &quot;Rhino&quot;,
+ &quot;style&quot;: {&quot;parcel&quot;:   {&quot;color&quot;: &quot;#ffc800&quot;, &quot;fill_pattern&quot;: &quot;Solid&quot;,  &quot;opacity&quot;: 0.16, &quot;stroke_width&quot;: 0.5},
+           &quot;building&quot;: {&quot;color&quot;: &quot;#dc0000&quot;, &quot;fill_pattern&quot;: &quot;Hatch1&quot;, &quot;opacity&quot;: 0.4,  &quot;stroke_width&quot;: 0.5}},
+ &quot;color_by&quot;: &quot;object&quot;,
+ &quot;label_height_m&quot;: 2,
+ &quot;nominal_scale&quot;: 1000}
+</code></pre>
+<ul>
+<li><code>crs</code>: any projected CRS in meters; the Rhino model must be at its coordinates.</li>
+<li><code>layers</code>: your project's layer → class map; <code>all_layers: true</code> exports all Rhino layers, with class = layer name (useful for a masterplan with dozens of layers).</li>
+<li><code>style</code>: the default look of each class (color, pattern, opacity, stroke width), read by both sides.</li>
+<li><code>color_by</code>: <code>object</code> (objects pulled from QGIS keep their own color) or <code>layer</code> (everything in the layer color).</li>
+</ul>
+<h2 id="en-cli-without-rhino-batch-checks">CLI without Rhino, batch checks<a class="anchor" href="#en-cli-without-rhino-batch-checks" title="Permanent link">¶</a></h2>
+<p><code>mapquilt_rhino.py</code> also works without Rhino, with <code>rhino3dm</code>:</p>
+<pre><code>python 08-rhino\mapquilt_rhino.py push desen.3dm C:\tmp\sync\rhino_push.geojson [--all-layers] [--crs=EPSG:xxxx]
+python 08-rhino\mapquilt_rhino.py pull qgis_pull.geojson out.3dm [--plain]
+</code></pre>
+<p>On the Țicău benchmark (<code>cadru_ticau.3dm</code>), <code>push</code> gives exactly the benchmark counts (3 streets, 32 parcels, 47 buildings, 27 annexes, 7 amenities, 41 indicators), with vertices within 1 mm of <code>etalon_ticau.geojson</code>. <code>pull</code> draws into a new <code>.3dm</code>; with <code>--plain</code> it draws on the base layers, not under <code>QGIS::</code>, so that it can be re-exported identically.</p>
+<h2 id="en-limits">Limits<a class="anchor" href="#en-limits" title="Permanent link">¶</a></h2>
+<ul>
+<li>Closed outlines, circles, texts and hatches go through; open lines, blocks and surfaces do not (they are reported).</li>
+<li>The holes of a polygon without a fill go from QGIS to Rhino as separate polylines; with a fill, they become the holes of the hatch.</li>
+<li><code>Hatch2</code> / <code>Hatch3</code> are approximated in QGIS by denser simple lines and come back as <code>Hatch1</code>. Gradients, SVGs and raster fills from QGIS become <code>Solid</code> or the closest pattern. Opacity does not exist in Rhino; it is kept only as an attribute.</li>
+<li>Hatches need Rhino: the CLI with <code>rhino3dm</code> can neither read them (reported on push) nor create them (on pull it draws the outline; the fill stays in the <code>mapquilt_fill</code> user text).</li>
+<li>Pull <strong>replaces</strong> everything on <code>QGIS::*</code>; move what you want to keep onto your own layers.</li>
+<li>No topology check during sync (overlaps, gaps); that stays in QGIS / in the Engine.</li>
+<li>Z is lost (everything is at 0); texts are 1 m high (labels 2 m), Arial.</li>
+<li>The automatic push exports the whole document at every 1.5 s pause; on drawings with thousands of objects, set <code>PUSH_DEBOUNCE_S</code> higher or use <code>RhinoSyncPush</code> manually.</li>
+<li><code>rhino_id</code> is the object's GUID: a copy, or a command that recreates the object (Trim, Join), gives a new id, hence a new feature in the project; editing control points keeps it. There is no conflict detection yet (the same feature changed on both sides).</li>
+<li>QGIS does not start Rhino and cannot stop it; the two applications see each other only through the <code>.alive-*</code> files.</li>
+</ul>
+<h2 id="en-literature">Literature<a class="anchor" href="#en-literature" title="Permanent link">¶</a></h2>
+<ul>
+<li>McNeel, <em>Rhino 8 — RhinoCommon and rhino3dm</em>, <a href="https://developer.rhino3d.com">https://developer.rhino3d.com</a>. The script runs on CPython 3 in Rhino 8; the CLI on <code>rhino3dm</code>.</li>
+<li>Howard Butler et al., <em>The GeoJSON Format</em>, RFC 7946 (IETF, 2016), <a href="https://doi.org/10.17487/RFC7946">https://doi.org/10.17487/RFC7946</a>. The format of the files in the shared folder (with the <code>crs</code> member for the projected CRS).</li>
+<li>OGC, <em>GeoPackage Encoding Standard</em> 1.3, <a href="https://www.geopackage.org">https://www.geopackage.org</a>. The sketch mirror and the project tables.</li>
+<li>QGIS Development Team, <em>QGIS Geographic Information System</em>, <a href="https://qgis.org">https://qgis.org</a>. The categorized and rule-based renderers read when sending.</li>
+<li>MapQuilt, <em>Legătura live Rhino ↔ QGIS</em> [The live Rhino ↔ QGIS link] (29–31 October 2026), <code>08-rhino/CITESTE-MA.md</code> (in Romanian), and <em>Necesitățile urbaniștilor</em> [What urban planners need], <code>CERCETARE-necesitati-urbanisti.md</code> §5, the layer families (in Romanian).</li>
+</ul>
+<h2 id="en-changelog">Changelog<a class="anchor" href="#en-changelog" title="Permanent link">¶</a></h2>
+<p>From the plugin's <code>metadata.txt</code>, newest first.</p>
+<ul class="changelog">
+<li><span class="version">0.2.1</span><span class="when">2026-11-04</span> — A &#x27;?&#x27; button in the dock opens the manual shipped with the plugin (help/index.html, generated from 06-plugin/help/rhino-sync; also online).</li>
+<li><span class="version">0.2.0</span><span class="when">2026-10-31</span> — Panel Play, layer families SCHITA / CONTEXT / QGIS, fills both ways, Fields, Send image.</li>
+</ul>
+<footer>Created by Radu Andrei, &quot;Gheorghe Asachi&quot; Technical University of Iași, Faculty of Architecture &quot;G. M. Cantacuzino&quot;, with the help of Claude (Anthropic). Plugin GPL-2+, independent of MapQuilt. The manual is generated from 06-plugin/help with build_help.py.</footer>
+<template class="links"><a href="https://raduandrei-source.github.io/MapQuilt/">MapQuilt manual</a><a href="https://github.com/raduandrei-source/RhinoSync">This manual on GitHub</a></template>
+</div>
+<div class="lang-block" id="lang-ro" lang="ro" data-subtitle="Legătura live Rhino 8 ↔ QGIS printr-un folder comun">
+<header class="title">
+  <img src="data:image/png;base64,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" alt="Rhino Sync">
+  <div>
+    <h1>Rhino Sync</h1>
+    <div class="sub">Legătura live Rhino 8 ↔ QGIS printr-un folder comun</div>
+    <div class="ver">versiunea 0.2.1 · manual generat la 2026-11-04 din <code>06-plugin/help/rhino-sync/ro</code> · <a href="https://raduandrei-source.github.io/RhinoSync/">varianta online</a></div>
+  </div>
+</header>
+<h2 id="ro-ce-este-rhino-sync">Ce este Rhino Sync<a class="anchor" href="#ro-ce-este-rhino-sync" title="Permanent link">¶</a></h2>
+<p>Desenați sau corectați în Rhino 8 și vedeți rezultatul în QGIS; trimiteți straturi din QGIS și le vedeți în Rhino, fără pași de export / import. Legătura este <strong>independentă de MapQuilt</strong>: aceeași conexiune merge în orice proiect Rhino + QGIS (un masterplan, o schiță de urbanism, un releveu). MapQuilt doar o încorporează în dock-ul său, ca tab.</p>
+<p>„Live” nu înseamnă un socket, ci <strong>două supraveghetoare de fișiere</strong> pe același folder: Rhino scrie <code>rhino_push.geojson</code>, QGIS îl încarcă în 0,5 s; QGIS scrie <code>qgis_pull.geojson</code>, Rhino îl desenează. E suficient pentru lucrul pe aceeași mașină sau pe un folder partajat.</p>
+<h3 id="ro-cine-l-a-făcut">Cine l-a făcut<a class="anchor" href="#ro-cine-l-a-făcut" title="Permanent link">¶</a></h3>
+<p>Rhino Sync, ca și MapQuilt, este creat de <strong>Radu Andrei</strong>, de la Universitatea Tehnică „Gheorghe Asachi” din Iași, Facultatea de Arhitectură „G. M. Cantacuzino”, cu ajutorul lui <strong>Claude</strong>, modelul de inteligență artificială al companiei Anthropic, care a scris codul, testele și documentația sub îndrumarea autorului, pe scanările planurilor cadastrale ICPROM Iași (1988–1990) și pe etalonul desenat de autor în Rhino. Întrebările cercetării, deciziile de metodă, verificarea adevărului din teren și fiecare confirmare pe foile reale sunt ale autorului; rapoartele de test din depozit (T1–T19) consemnează ce s-a încercat și cu ce cifre.</p>
+<h3 id="ro-regula-pentru-utilizator">Regula pentru utilizator<a class="anchor" href="#ro-regula-pentru-utilizator" title="Permanent link">¶</a></h3>
+<p><em>Desenezi pe <code>SCHITA</code>, citești <code>CONTEXT</code>, iar <code>QGIS</code> îți răspunde.</em></p>
+<table>
+<thead>
+<tr>
+<th>Familie de straturi Rhino</th>
+<th>Cine o scrie</th>
+<th>Ce înseamnă</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SCHITA::&lt;CLASA&gt;[::&lt;SUBTIP&gt;]</code></td>
+<td>dvs.</td>
+<td>singura familie care pleacă la push; al doilea nivel e clasa (<code>SCHITA::CLADIRI</code> → building), al treilea subtipul (<code>SCHITA::CLADIRI::P+4</code> → <code>subtype</code> P+4, și <code>RH</code> dacă e regim de înălțime)</td>
+</tr>
+<tr>
+<td><code>CONTEXT::&lt;STRAT&gt;</code></td>
+<td>QGIS → Rhino („Send context”)</td>
+<td>situația existentă (cadastru, clădiri, limite…), desenată <strong>blocată</strong>, înlocuită la fiecare trimitere, niciodată exportată</td>
+</tr>
+<tr>
+<td><code>QGIS::&lt;STRAT&gt;</code></td>
+<td>QGIS → Rhino („Send to Rhino”)</td>
+<td>răspunsurile: ce a fost preluat / editat în QGIS; înlocuite la fiecare pull, niciodată exportate</td>
+</tr>
+<tr>
+<td><code>PARCELE</code>, <code>CLADIRI</code> … (simple)</td>
+<td>desenele vechi</td>
+<td>convenția simplă merge în continuare</td>
+</tr>
+</tbody>
+</table>
+<p>Fiecare entitate trimisă poartă <code>rhino_id</code> (GUID-ul obiectului Rhino), <code>class</code>, <code>subtype</code>, <code>RH</code>, umplerile (<code>fill_pattern</code>, <code>fill_color</code>, <code>fill_scale</code>, <code>fill_angle</code>).</p>
+<h3 id="ro-convenția-de-georeferențiere">Convenția de georeferențiere<a class="anchor" href="#ro-convenția-de-georeferențiere" title="Permanent link">¶</a></h3>
+<p>Modelul Rhino este în <strong>metri</strong>, iar coordonatele <strong>sunt</strong> cele ale CRS-ului proiectat (implicit Stereo 70, EPSG:3844): nu se mută originea, nu se aplică nicio transformare. Punctul din desen 695 500 / 633 200 este punctul de pe hartă 695 500 / 633 200. <code>EarthAnchorPoint</code> e ignorat (comanda avertizează dacă e setat); un document care nu e în metri primește un avertisment.</p>
+<h2 id="ro-instalare">Instalare<a class="anchor" href="#ro-instalare" title="Permanent link">¶</a></h2>
+<h3 id="ro-cu-un-clic">Cu un clic<a class="anchor" href="#ro-cu-un-clic" title="Permanent link">¶</a></h3>
+<p><code>08-rhino\installer\dist\RhinoSyncSetup.exe</code> copiază scripturile în <code>Documents\rhino-sync</code>, scrie aliasurile <code>RhinoSync</code>, <code>RhinoSyncPush</code>, <code>RhinoSyncPull</code>, <code>RhinoSyncWatch</code> în setările Rhino 8 și pune pluginul <strong>Rhino Sync</strong> în profilul QGIS, activat. Închideți Rhino și QGIS înainte (aliasurile se scriu în <code>settings-Scheme__Default.xml</code>, pe care Rhino îl rescrie la închidere).</p>
+<h3 id="ro-manual-în-rhino-8">Manual, în Rhino 8<a class="anchor" href="#ro-manual-în-rhino-8" title="Permanent link">¶</a></h3>
+<ol>
+<li>Copiați <code>08-rhino</code> (sau măcar <code>mapquilt_rhino.py</code>, <code>RhinoSync.py</code>, <code>MapQuiltPush.py</code>, <code>MapQuiltPull.py</code>, <code>MapQuiltWatch.py</code>) undeva stabil, de ex. <code>Documents\rhino-sync\</code>.</li>
+<li><em>Options › Aliases</em>, câte unul pe comandă (o singură pereche de ghilimele, calea e a dvs.):</li>
+</ol>
+<pre><code>RhinoSync        ! _-RunPythonScript &quot;C:\Users\&lt;dvs&gt;\Documents\rhino-sync\RhinoSync.py&quot;
+RhinoSyncPush    ! _-RunPythonScript &quot;C:\Users\&lt;dvs&gt;\Documents\rhino-sync\MapQuiltPush.py&quot;
+RhinoSyncPull    ! _-RunPythonScript &quot;C:\Users\&lt;dvs&gt;\Documents\rhino-sync\MapQuiltPull.py&quot;
+RhinoSyncWatch   ! _-RunPythonScript &quot;C:\Users\&lt;dvs&gt;\Documents\rhino-sync\MapQuiltWatch.py&quot;
+</code></pre>
+<p>Scriptul rulează pe CPython 3 (implicit în Rhino 8); panoul cere Eto.Forms, deci CPython. Prima rulare pe un document nesalvat cere folderul.</p>
+<h3 id="ro-manual-în-qgis">Manual, în QGIS<a class="anchor" href="#ro-manual-în-qgis" title="Permanent link">¶</a></h3>
+<p>Copiați <code>08-rhino/qgis-plugin/rhino_sync</code> în <code>%APPDATA%\QGIS\QGIS4\profiles\default\python\plugins\</code> și activați <strong>Rhino Sync</strong> din <em>Plugins › Manage</em>; dock-ul apare din meniul Vector sau din bara de unelte. Cu MapQuilt instalat, aceeași casetă e tabul <strong>Rhino sync</strong> al dock-ului MapQuilt.</p>
+<h3 id="ro-folderul-comun">Folderul comun<a class="anchor" href="#ro-folderul-comun" title="Permanent link">¶</a></h3>
+<p>Implicit, folderul este <code>rhino-sync</code> lângă fișierul <code>.3dm</code>; Rhino îl ține minte în textul-utilizator al documentului, QGIS în setări. Un folder = un proiect.</p>
+<pre><code>&lt;folder&gt;/rhino_push.geojson    scris de Rhino, citit de QGIS
+&lt;folder&gt;/qgis_pull.geojson     scris de QGIS, citit de Rhino (pe QGIS::*)
+&lt;folder&gt;/qgis_context.geojson  scris de QGIS, citit de Rhino (pe CONTEXT::*, blocat)
+&lt;folder&gt;/.alive-rhino, .alive-qgis   bătaia de inimă a fiecărei părți cât e pe Play (3 s)
+&lt;folder&gt;/.mapquilt-sync.json   însoțitor (cine, când, ce, CRS, harta straturilor)
+&lt;folder&gt;/sync-config.json      opțional: CRS, harta straturilor, numele părinților, stiluri
+&lt;folder&gt;/rhino_sync.gpkg       creat de QGIS: oglinda schiței, un strat pe clasă (draft_*)
+&lt;folder&gt;/project.gpkg          creat de QGIS la Promote: tabelele proiectului, cu rhino_id
+</code></pre>
+<p>Fișierele se scriu atomic (temporar + înlocuire, cu reîncercare o secundă dacă Windows răspunde „Access is denied” pentru că cealaltă parte citește).</p>
+<h2 id="ro-panoul-play">Panoul Play<a class="anchor" href="#ro-panoul-play" title="Permanent link">¶</a></h2>
+<p>Același pe ambele părți.</p>
+<p><strong>Rhino</strong>: <code>RhinoSync</code> deschide o fereastră nemodală „Rhino sync”: <em>Project folder</em> (+ „…”), o lampă cu text, <strong>Play / Stop</strong>, <em>Send now</em>, <em>Get now</em>, <em>Get context</em> și ultimul mesaj. Play = modul live (push automat la 1,5 s după ultima modificare, pull și context automate, bătaie de inimă în <code>.alive-rhino</code>); lampa e verde cât QGIS e și el pe Play. A doua comandă aduce fereastra în față, nu deschide alta.</p>
+<p><strong>QGIS</strong>: dock-ul „Rhino sync” (sau tabul din MapQuilt) are aceleași elemente: <em>Project folder</em>, lampă, <strong>Play / Stop</strong>, <em>Send to Rhino</em>, <em>Get now</em>, plus <em>Send context</em>, <em>Promote to project</em>, <em>Fields…</em>, <em>Send image</em>. Play = supravegherea folderului (fiecare push din Rhino se încarcă singur) și bătaia de inimă în <code>.alive-qgis</code>; starea Play se ține minte între sesiuni.</p>
+<h3 id="ro-ciclul-tipic">Ciclul tipic<a class="anchor" href="#ro-ciclul-tipic" title="Permanent link">¶</a></h3>
+<ol>
+<li>În Rhino: <code>RhinoSync</code> › Play. În QGIS: Play.</li>
+<li>Desenați pe <code>SCHITA::PARCELE</code> sau <code>SCHITA::CLADIRI::P+4</code>; la o secundă-două după ce ridicați mâna, parcela apare în QGIS, în grupul <strong>Rhino › Draft from Rhino</strong>, peste planșă și satelit.</li>
+<li>Corectați în QGIS o față, <em>Send to Rhino</em>: o vedeți imediat pe <code>QGIS::PARCELE</code>, în culoarea simbolului QGIS.</li>
+<li><em>Send context</em> trimite straturile selectate (cadastrul existent, clădirile) pe <code>CONTEXT::&lt;NUME STRAT&gt;</code>, blocate în Rhino.</li>
+</ol>
+<h3 id="ro-draft-project-în-qgis">Draft / Project în QGIS<a class="anchor" href="#ro-draft-project-în-qgis" title="Permanent link">¶</a></h3>
+<ul>
+<li>Grupul <strong>Rhino › Draft from Rhino</strong>: oglinda schiței, straturi <code>draft_&lt;clasă&gt;</code> în <code>rhino_sync.gpkg</code>, <strong>doar citire</strong>, înlocuite la fiecare push, stilizate pe clasă (randor pe categorii după <code>fill_pattern</code>).</li>
+<li><strong>Promote to project</strong> copiază entitățile din oglindă (cele selectate în straturile <code>draft_*</code>, sau toate) în <code>project.gpkg</code>, grupul <strong>Rhino › Project</strong>, câte un tabel pe clasă (<code>parcel</code>, <code>building</code>, <code>indicator</code>, <code>zf_propusa</code> …) cu <code>rhino_id</code>, <code>class</code>, <code>subtype</code>, <code>RH</code>, <code>code</code>, <code>radius_m</code>, <code>area_m2</code>, <code>source</code>, <code>promoted_at</code>, <code>note</code>, umplerile și orice coloane adăugați. O entitate deja promovată (același <code>rhino_id</code>) e actualizată, nu dublată.</li>
+<li><em>Send to Rhino</em> trimite straturile selectate (implicit toate straturile vectoriale din afara oglinzii, deci și tabelele proiectului) pe <code>QGIS::*</code>.</li>
+</ul>
+<h3 id="ro-etichete-câmpuri-imagine">Etichete, câmpuri, imagine<a class="anchor" href="#ro-etichete-câmpuri-imagine" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Fields…</strong>: o fereastră cu straturile și câmpurile lor, cu bife. Câmpurile bifate pleacă în Rhino la fiecare <em>Send</em>: <strong>primul</strong> câmp bifat devine un <strong>text</strong> centrat în poligon (înălțime <code>label_height_m</code>, implicit 2 m, în culoarea etichetei din QGIS), toate câmpurile bifate devin atribute (text-utilizator pe obiect).</li>
+<li><strong>Textul editat în Rhino se întoarce în QGIS</strong>: textele-etichetă țin minte câmpul și entitatea; la push, cele schimbate pleacă în <code>rhino_push.geojson</code> ca <code>mapquilt.edits</code>, iar QGIS scrie valoarea nouă în câmp.</li>
+<li><strong>Send image</strong> randează straturile raster (cele selectate, altfel cele vizibile: satelit XYZ, ortofoto) pe extinderea straturilor vectoriale selectate sau, fără selecție, pe ce arată harta, +30 % pe fiecare latură, la 0,5 m/pixel (cel mult 4096 px), în CRS-ul proiectului; Rhino o așază ca <code>PictureFrame</code> blocat pe <code>CONTEXT::IMAGINE</code>.</li>
+</ul>
+<h2 id="ro-convenții">Convenții<a class="anchor" href="#ro-convenții" title="Permanent link">¶</a></h2>
+<h3 id="ro-straturi-și-geometrii">Straturi și geometrii<a class="anchor" href="#ro-straturi-și-geometrii" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>Strat Rhino</th>
+<th>clasă</th>
+<th>geometrie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>STRAZI</code></td>
+<td>street</td>
+<td>polilinie închisă</td>
+</tr>
+<tr>
+<td><code>PARCELE</code></td>
+<td>parcel (include clădirea)</td>
+<td>polilinie închisă</td>
+</tr>
+<tr>
+<td><code>CLADIRI</code></td>
+<td>building</td>
+<td>polilinie închisă</td>
+</tr>
+<tr>
+<td><code>ANEXE</code></td>
+<td>annex</td>
+<td>polilinie închisă</td>
+</tr>
+<tr>
+<td><code>AMENAJARI</code></td>
+<td>amenity</td>
+<td>polilinie închisă</td>
+</tr>
+<tr>
+<td><code>CODURI</code></td>
+<td>indicator</td>
+<td>cerc (→ punct cu <code>radius_m</code>) sau text (→ punct cu <code>code</code>)</td>
+</tr>
+<tr>
+<td>oricare</td>
+<td>aceeași clasă</td>
+<td><strong>hașură</strong> → poligon cu goluri + umplere (<code>fill_pattern</code>, <code>fill_color</code>, <code>fill_scale</code>, <code>fill_angle</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Numai contururi <strong>închise</strong> trec (o polilinie deschisă cu golul sub 1 m se închide automat și se raportează; peste 1 m se sare). Curbele care nu sunt polilinii (spline, polycurve cu arce) se eșantionează în 200 de vârfuri; cercurile NURBS se recunosc prin potrivire de cerc. Straturile imbricate merg după ultimul nume (<code>Default::PARCELE</code> = <code>PARCELE</code>). Un strat <code>SCHITA::&lt;nume nemapat&gt;</code> dă clasa <code>&lt;nume&gt;</code> cu minuscule (<code>SCHITA::ZF_PROPUSA</code> → <code>zf_propusa</code>).</p>
+<h3 id="ro-umpleri-și-culori-în-ambele-sensuri">Umpleri și culori, în ambele sensuri<a class="anchor" href="#ro-umpleri-și-culori-în-ambele-sensuri" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Rhino → QGIS.</strong> O hașură devine un poligon cu golurile ei și cu <code>fill_pattern</code> (<code>Solid</code>, <code>Hatch1</code>, <code>Hatch2</code>, <code>Hatch3</code>, <code>HatchDash</code>, <code>Grid</code>, <code>Grid60</code>, <code>Plus</code>, <code>Squares</code>; un model propriu se trimite ca <code>Hatch1</code>), <code>fill_color</code> (<code>#rrggbb</code>, pe obiect sau pe strat), <code>fill_scale</code>, <code>fill_angle</code>. QGIS le desenează cu un randor pe categorii.</li>
+<li><strong>QGIS → Rhino.</strong> <em>Send to Rhino</em> citește simbolul fiecărei entități (simbol unic, categorii, reguli) și îl traduce în cel mai apropiat model Rhino: umplere simplă → <code>Solid</code>; umplere cu linii → <code>Hatch1</code> / <code>HatchDash</code> (unghiul și distanța se păstrează; două familii la 90° → <code>Grid</code>, trei la 60° → <code>Grid60</code>); culoarea conturului și a umplerii se păstrează. Un strat QGIS care nu e o clasă ajunge pe <code>QGIS::&lt;NUMELE LUI&gt;</code> (fără diacritice, majuscule), cu culoarea simbolului.</li>
+<li><code>nominal_scale</code> (implicit 1000) spune la ce scară de hârtie milimetrii simbolurilor QGIS devin metri în Rhino (1 mm = 1 m).</li>
+</ul>
+<h3 id="ro-sync-configjson"><code>sync-config.json</code><a class="anchor" href="#ro-sync-configjson" title="Permanent link">¶</a></h3>
+<p>QGIS îl creează cu valorile implicite când alegeți folderul; îl puteți edita. Ambele părți îl citesc.</p>
+<pre><code class="language-json">{&quot;crs&quot;: &quot;EPSG:3844&quot;,
+ &quot;layers&quot;: {&quot;STRAZI&quot;: &quot;street&quot;, &quot;PARCELE&quot;: &quot;parcel&quot;, &quot;CLADIRI&quot;: &quot;building&quot;, &quot;ANEXE&quot;: &quot;annex&quot;, &quot;AMENAJARI&quot;: &quot;amenity&quot;, &quot;CODURI&quot;: &quot;indicator&quot;},
+ &quot;all_layers&quot;: false,
+ &quot;draft_parent_layer&quot;: &quot;SCHITA&quot;, &quot;context_parent_layer&quot;: &quot;CONTEXT&quot;, &quot;pull_parent_layer&quot;: &quot;QGIS&quot;,
+ &quot;qgis_group&quot;: &quot;Rhino&quot;,
+ &quot;style&quot;: {&quot;parcel&quot;:   {&quot;color&quot;: &quot;#ffc800&quot;, &quot;fill_pattern&quot;: &quot;Solid&quot;,  &quot;opacity&quot;: 0.16, &quot;stroke_width&quot;: 0.5},
+           &quot;building&quot;: {&quot;color&quot;: &quot;#dc0000&quot;, &quot;fill_pattern&quot;: &quot;Hatch1&quot;, &quot;opacity&quot;: 0.4,  &quot;stroke_width&quot;: 0.5}},
+ &quot;color_by&quot;: &quot;object&quot;,
+ &quot;label_height_m&quot;: 2,
+ &quot;nominal_scale&quot;: 1000}
+</code></pre>
+<ul>
+<li><code>crs</code>: orice CRS proiectat în metri; modelul Rhino trebuie să fie la coordonatele lui.</li>
+<li><code>layers</code>: harta strat → clasă a proiectului dvs.; <code>all_layers: true</code> exportă toate straturile Rhino, clasa = numele stratului (util pentru un masterplan cu zeci de straturi).</li>
+<li><code>style</code>: aspectul implicit al fiecărei clase (culoare, model, opacitate, grosime), citit de ambele părți.</li>
+<li><code>color_by</code>: <code>object</code> (obiectele trase din QGIS au culoarea lor) sau <code>layer</code> (totul pe culoarea stratului).</li>
+</ul>
+<h2 id="ro-cli-fără-rhino-verificare-în-loturi">CLI fără Rhino, verificare în loturi<a class="anchor" href="#ro-cli-fără-rhino-verificare-în-loturi" title="Permanent link">¶</a></h2>
+<p><code>mapquilt_rhino.py</code> merge și fără Rhino, cu <code>rhino3dm</code>:</p>
+<pre><code>python 08-rhino\mapquilt_rhino.py push desen.3dm C:\tmp\sync\rhino_push.geojson [--all-layers] [--crs=EPSG:xxxx]
+python 08-rhino\mapquilt_rhino.py pull qgis_pull.geojson out.3dm [--plain]
+</code></pre>
+<p>Pe etalonul Țicău (<code>cadru_ticau.3dm</code>) <code>push</code> dă exact numărătorile etalonului (3 străzi, 32 parcele, 47 clădiri, 27 anexe, 7 amenajări, 41 indicatori), cu vârfurile la sub 1 mm de <code>etalon_ticau.geojson</code>. <code>pull</code> desenează într-un <code>.3dm</code> nou; cu <code>--plain</code> pe straturile de bază, nu sub <code>QGIS::</code>, ca să poată fi re-exportat identic.</p>
+<h2 id="ro-limite">Limite<a class="anchor" href="#ro-limite" title="Permanent link">¶</a></h2>
+<ul>
+<li>Trec contururi închise, cercuri, texte și hașuri; linii deschise, blocuri și suprafețe nu trec (sunt raportate).</li>
+<li>Golurile unui poligon fără umplere trec din QGIS în Rhino ca polilinii separate; cu umplere, devin golurile hașurii.</li>
+<li><code>Hatch2</code> / <code>Hatch3</code> se aproximează în QGIS prin linii simple mai dese și se întorc ca <code>Hatch1</code>. Gradientele, SVG-urile și rastrele din QGIS devin <code>Solid</code> sau cel mai apropiat model. Opacitatea nu există în Rhino; se păstrează doar ca atribut.</li>
+<li>Hașurile cer Rhino: CLI-ul cu <code>rhino3dm</code> nu le poate citi (raportate la push) și nici crea (la pull desenează conturul; umplerea rămâne în textul-utilizator <code>mapquilt_fill</code>).</li>
+<li>Pull-ul <strong>înlocuiește</strong> tot ce e pe <code>QGIS::*</code>; ce vreți să păstrați mutați pe straturile dvs.</li>
+<li>Nicio verificare topologică la sincronizare (suprapuneri, goluri); ea rămâne în QGIS / în Engine.</li>
+<li>Z-ul se pierde (totul e la 0); textele au înălțime 1 m (etichetele 2 m), Arial.</li>
+<li>Push-ul automat exportă tot documentul la fiecare pauză de 1,5 s; pe desene de mii de obiecte setați <code>PUSH_DEBOUNCE_S</code> mai mare sau folosiți <code>RhinoSyncPush</code> manual.</li>
+<li><code>rhino_id</code> e GUID-ul obiectului: o copie sau o comandă care îl recreează (Trim, Join) dă un id nou, deci o entitate nouă în proiect; editarea punctelor de control îl păstrează. Nu există încă detectarea conflictelor (aceeași entitate schimbată pe ambele părți).</li>
+<li>QGIS nu pornește Rhino și nu îl poate opri; cele două aplicații se văd doar prin fișierele <code>.alive-*</code>.</li>
+</ul>
+<h2 id="ro-literatură">Literatură<a class="anchor" href="#ro-literatură" title="Permanent link">¶</a></h2>
+<ul>
+<li>McNeel, <em>Rhino 8 — RhinoCommon și rhino3dm</em>, <a href="https://developer.rhino3d.com">https://developer.rhino3d.com</a>. Scriptul rulează pe CPython 3 în Rhino 8; CLI-ul pe <code>rhino3dm</code>.</li>
+<li>Howard Butler et al., <em>The GeoJSON Format</em>, RFC 7946 (IETF, 2016), <a href="https://doi.org/10.17487/RFC7946">https://doi.org/10.17487/RFC7946</a>. Formatul fișierelor din folderul comun (cu membrul <code>crs</code> pentru CRS-ul proiectat).</li>
+<li>OGC, <em>GeoPackage Encoding Standard</em> 1.3, <a href="https://www.geopackage.org">https://www.geopackage.org</a>. Oglinda schiței și tabelele proiectului.</li>
+<li>QGIS Development Team, <em>QGIS Geographic Information System</em>, <a href="https://qgis.org">https://qgis.org</a>. Randoarele pe categorii și pe reguli citite la trimitere.</li>
+<li>MapQuilt, <em>Legătura live Rhino ↔ QGIS</em> (29–31 octombrie 2026), <code>08-rhino/CITESTE-MA.md</code>, și <em>Necesitățile urbaniștilor</em>, <code>CERCETARE-necesitati-urbanisti.md</code> §5 (familiile de straturi).</li>
+</ul>
+<h2 id="ro-jurnalul-versiunilor-changelog">Jurnalul versiunilor (changelog)<a class="anchor" href="#ro-jurnalul-versiunilor-changelog" title="Permanent link">¶</a></h2>
+<p>Din <code>metadata.txt</code> al pluginului, cea mai nouă versiune prima (în engleză).</p>
+<ul class="changelog">
+<li><span class="version">0.2.1</span><span class="when">2026-11-04</span> — A &#x27;?&#x27; button in the dock opens the manual shipped with the plugin (help/index.html, generated from 06-plugin/help/rhino-sync; also online).</li>
+<li><span class="version">0.2.0</span><span class="when">2026-10-31</span> — Panel Play, layer families SCHITA / CONTEXT / QGIS, fills both ways, Fields, Send image.</li>
+</ul>
+<footer>Creat de Radu Andrei, Universitatea Tehnică „Gheorghe Asachi” din Iași, Facultatea de Arhitectură „G. M. Cantacuzino”, cu ajutorul lui Claude (Anthropic). Plugin GPL-2+, independent de MapQuilt. Manualul se generează din 06-plugin/help cu build_help.py.</footer>
+<template class="links"><a href="https://raduandrei-source.github.io/MapQuilt/">Manualul MapQuilt</a><a href="https://github.com/raduandrei-source/RhinoSync">Manualul pe GitHub</a></template>
+</div>
+</main>
+<script>
+(function () {
+  var blocks = {}; document.querySelectorAll(".lang-block").forEach(function (b) { blocks[b.id.slice(5)] = b; });
+  var langs = Object.keys(blocks);
+  var sels = [document.getElementById("lang-select"), document.getElementById("lang-select-m")].filter(Boolean);
+  function pick() {
+    var q = (location.search.match(/[?&]lang=(\w+)/) || [])[1];
+    if (q && blocks[q]) return q;
+    try { var m = localStorage.getItem("help-lang"); if (m && blocks[m]) return m; } catch (e) {}
+    return blocks.en ? "en" : langs[0];                 // English unless the reader picked another language
+  }
+  var items = [];
+  function sync() {
+    var y = window.scrollY + 90, best = null;
+    items.forEach(function (i) { if (i.h.offsetTop <= y) best = i; });
+    items.forEach(function (i) { i.link.classList.toggle("current", i === best); i.el.classList.toggle("open", i === best); });
+  }
+  function build(lang) {
+    langs.forEach(function (l) { blocks[l].classList.toggle("on", l === lang); });
+    document.documentElement.lang = lang;
+    var block = blocks[lang];
+    document.getElementById("toc-sub").textContent = block.getAttribute("data-subtitle") || "";
+    var tpl = block.querySelector("template.links");
+    document.getElementById("toc-links").innerHTML = tpl ? tpl.innerHTML : "";
+    var toc = document.getElementById("toc"); toc.innerHTML = ""; items = [];
+    var current = null;
+    block.querySelectorAll("h2, h3").forEach(function (h) {
+      var text = h.textContent.replace(/\u00b6$/, "");
+      if (h.tagName === "H2") {
+        var item = document.createElement("div"); item.className = "toc-item";
+        var a = document.createElement("a"); a.href = "#" + h.id; a.textContent = text; a.className = "toc-h2";
+        var kids = document.createElement("div"); kids.className = "toc-children";
+        item.appendChild(a); item.appendChild(kids); toc.appendChild(item);
+        current = { el: item, kids: kids, link: a, h: h }; items.push(current);
+      } else if (current) {
+        var b = document.createElement("a"); b.href = "#" + h.id; b.textContent = text; b.className = "toc-h3";
+        current.kids.appendChild(b);
+      }
+    });
+    sels.forEach(function (s) { s.value = lang; });
+    sync();
+  }
+  sels.forEach(function (s) {
+    s.addEventListener("change", function () {
+      try { localStorage.setItem("help-lang", s.value); } catch (e) {}
+      build(s.value); window.scrollTo(0, 0);
+    });
+  });
+  var lang = pick();
+  var hash = location.hash.slice(1);
+  if (hash && blocks[hash.split("-")[0]]) lang = hash.split("-")[0];
+  build(lang);
+  if (hash) { var t = document.getElementById(hash); if (t) t.scrollIntoView(); }
+  window.addEventListener("scroll", sync);
+})();
+</script>
+</body>
+</html>
